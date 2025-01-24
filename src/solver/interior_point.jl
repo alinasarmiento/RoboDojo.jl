@@ -241,7 +241,7 @@ function _interior_point_solve!(ip::InteriorPoint{T,R,RZ,Rθ}) where {T,R,RZ,Rθ
 
             # Compute corrector residual
             ip.κ[1] = max(σ * μ , κ_tol / opts.undercut)
-            ip.methods.r!(r, z, θ, ip.κ) # here we set κ = σ*μ, Δ = Δaff
+            ip.methods.r!(r, z, θ, ip.κ[1]) # here we set κ = σ*μ, Δ = Δaff
             general_correction_term!(r, Δ, ortr, socr, sorci, ortΔ, socΔ)
 
             # Compute corrector search direction
