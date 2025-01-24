@@ -16,6 +16,7 @@ Rotations = "6038ab10-8711-5258-84ad-4b1120ba62dc"
 Scratch = "6c6a2e73-6563-6170-7368-637461726353"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
+ContactImplicitMPC = "842347fd-0767-4ff8-b652-76aad5eb0a37"
 
 [compat]
 BenchmarkTools = "1.0"
@@ -29,4 +30,3 @@ Rotations = "1.0.2 - 1.0.2"
 Scratch = "1.0"
 Symbolics = "0.1.29 - 0.1.29"
 julia = "1.6"
-ContactImplicitMPC = "0.2.0"
