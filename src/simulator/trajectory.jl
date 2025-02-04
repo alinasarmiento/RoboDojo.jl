@@ -1,4 +1,4 @@
-struct Trajectory{T} 
+abstract type Trajectory{T}
     q::Vector{Vector{T}} # generalized coordinates
     v::Vector{Vector{T}} # generalized velocities
     u::Vector{Vector{T}} # control inputs
