@@ -1,7 +1,4 @@
-abstract type Trajectory{T} end
-
-struct GenericTrajectory{T} <: Trajectory{T}
-# struct Trajectory{T}
+struct Trajectory{T}
     q::Vector{Vector{T}} # generalized coordinates
     v::Vector{Vector{T}} # generalized velocities
     u::Vector{Vector{T}} # control inputs
@@ -21,7 +18,7 @@ function Trajectory(model, T; nv=model.nq, nc=model.nc, nb=model.nc)
     γ = [zeros(nc) for t = 1:T] 
     b = [zeros(nb) for t = 1:T] 
     w = [zeros(nw) for t = 1:T] 
-    GenericTrajectory(q, v, u, γ, b, w)
+    Trajectory(q, v, u, γ, b, w)
 end
 
 function reset!(traj::Trajectory) 
