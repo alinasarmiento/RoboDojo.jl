@@ -1,3 +1,5 @@
+using Infiltrator
+
 @with_kw struct SimulatorOptions{T}
     warmstart::Bool=false
     record::Bool=true
@@ -258,6 +260,7 @@ function simulate!(s::Simulator{T}; verbose=false) where T
 
         # disturbances
         traj.w[t] .= disturbances(w, traj.q[t+1], t)
+        @infiltrate
 
         # step
         status = step!(s, t, verbose=verbose)
