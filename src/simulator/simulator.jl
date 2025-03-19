@@ -260,7 +260,10 @@ function simulate!(s::Simulator{T}; verbose=false) where T
 
         # disturbances
         traj.w[t] .= disturbances(w, traj.q[t+1], t)
-        @infiltrate
+        if t >= 199:
+            print(t)
+            @infiltrate
+        end
 
         # step
         status = step!(s, t, verbose=verbose)
