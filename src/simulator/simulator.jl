@@ -260,7 +260,7 @@ function simulate!(s::Simulator{T}; verbose=false) where T
 
         # disturbances
         traj.w[t] .= disturbances(w, traj.q[t+1], t)
-        if t >= 199
+        if t >= 18
             @infiltrate
         end
 
