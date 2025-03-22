@@ -261,9 +261,9 @@ function simulate!(s::Simulator{T}; verbose=false) where T
 
         # disturbances
         traj.w[t] .= disturbances(w, traj.q[t+1], t)
-        # if traj.w[t][1] > 0
-        #     @infiltrate
-        # end
+        if traj.w[t][1] > 0.01
+            @infiltrate
+        end
 
         # step
         status = step!(s, t, verbose=verbose)
