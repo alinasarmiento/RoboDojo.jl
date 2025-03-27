@@ -1,4 +1,3 @@
-using Infiltrator
 
 @with_kw struct SimulatorOptions{T}
     warmstart::Bool=false
@@ -133,7 +132,6 @@ function step!(s::Simulator{T}, t::Int; verbose=false) where T
     if !status
         verbose && (@show norm(ip.r))
         verbose && (@warn "residual failure")
-        @infiltrate
         return false
     end
 
