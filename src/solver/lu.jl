@@ -52,11 +52,12 @@ end
 function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
                        b::Vector{T}; reg::T = 0.0, fact::Bool = true) where T
     # print("\n in RoDo linear_solve \n")
-    # print("\n fact && factorize")
-    fact && factorize!(s, A)
-    x .= b
-    # print("\n get rs")
-    LinearAlgebra.LAPACK.getrs!('N', s.A, s.ipiv, x)
+    print("\n fact && factorize")
+    @time fact && factorize!(s, A)
+    print("\n set x\n")
+    @time x .= b
+    print("\n get rs")
+    @time LinearAlgebra.LAPACK.getrs!('N', s.A, s.ipiv, x)
 end
 
 function linear_solve!(s::LUSolver{T}, x::Matrix{T}, A::Matrix{T},
