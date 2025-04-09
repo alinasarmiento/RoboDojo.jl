@@ -50,10 +50,13 @@ function factorize!(s::LUSolver{T}, A::AbstractMatrix{T}) where T
 end
 
 function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
-        b::Vector{T}; reg::T = 0.0, fact::Bool = true) where T
-    fact && factorize!(s, A)
-    x .= b 
-    LinearAlgebra.LAPACK.getrs!('N', s.A, s.ipiv, x)
+                       b::Vector{T}; reg::T = 0.0, fact::Bool = true) where T
+    print("in RoDo linear_solve")
+    print("fact && factorize")
+    @time fact && factorize!(s, A)
+    x .= b
+    print("get rs")
+    @time LinearAlgebra.LAPACK.getrs!('N', s.A, s.ipiv, x)
 end
 
 function linear_solve!(s::LUSolver{T}, x::Matrix{T}, A::Matrix{T},
