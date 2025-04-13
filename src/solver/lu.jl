@@ -51,9 +51,13 @@ end
 
 function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
                        b::Vector{T}; reg::T = 0.0, fact::Bool = true) where T
-    # print("\n in RoDo linear_solve \n")
-    print("\n fact && factorize")
-    @time fact && factorize!(s, A)
+
+    using Infiltrator
+    elapsed = @elapsed fact && factorize!(s, A)
+    if elapsed > 10.0
+        @infiltrate
+    end
+    
     # print("\n set x\n")
     x .= b
     # print("\n get rs")
