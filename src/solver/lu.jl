@@ -1,3 +1,5 @@
+using Infiltrator
+
 abstract type LinearSolver end
 
 """ 
@@ -52,7 +54,6 @@ end
 function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
                        b::Vector{T}; reg::T = 0.0, fact::Bool = true) where T
 
-    using Infiltrator
     elapsed = @elapsed fact && factorize!(s, A)
     if elapsed > 10.0
         @infiltrate
