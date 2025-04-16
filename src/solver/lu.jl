@@ -62,7 +62,7 @@ function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
         # @profile factorize!(s,A)
         # Profile.print()
     # end
-    
+    print("called")
     # print("\n set x\n")
     x .= b
     # print("\n get rs")
