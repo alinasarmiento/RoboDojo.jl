@@ -1,5 +1,5 @@
-using Infiltrator
-using Profile
+# using Infiltrator
+# using Profile
 
 abstract type LinearSolver end
 
@@ -56,12 +56,12 @@ function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
                        b::Vector{T}; reg::T = 0.0, fact::Bool = true) where T
 
     elapsed = @elapsed fact && factorize!(s, A)
-    if elapsed > 10.0
-        @infiltrate
+    # if elapsed > 10.0
+    #     @infiltrate
         # print("factorize! profiling")
         # @profile factorize!(s,A)
         # Profile.print()
-    end
+    # end
     
     # print("\n set x\n")
     x .= b
