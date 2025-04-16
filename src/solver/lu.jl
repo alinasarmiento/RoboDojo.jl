@@ -56,7 +56,10 @@ function linear_solve!(s::LUSolver{T}, x::Vector{T}, A::Matrix{T},
 
     elapsed = @elapsed fact && factorize!(s, A)
     if elapsed > 10.0
-        @infiltrate
+        # @infiltrate
+        print("factorize! profiling")
+        @profile factorize!(s,A)
+        Profile.print()
     end
     
     # print("\n set x\n")
