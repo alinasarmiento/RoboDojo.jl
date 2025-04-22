@@ -3,7 +3,7 @@ module RoboDojo
 using LinearAlgebra
 using Symbolics
 using SparseArrays
-using BenchmarkTools
+# using BenchmarkTools
 using MeshCat
 using GeometryBasics
 using Colors
