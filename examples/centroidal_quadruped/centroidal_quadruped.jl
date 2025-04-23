@@ -28,7 +28,7 @@ s = Simulator(centroidal_quadruped, T,
 # ## Simulate
 simulate!(s, q1, v1)
 
-# using BenchmarkTools 
+using BenchmarkTools 
 @benchmark simulate!(s, q1, v1) setup=(s=s, q1=q1, v1=v1)
 
 # ## Visualizer
